@@ -6,6 +6,7 @@ import RingCard from "./RingCard";
 import IncomeEditor from "./IncomeEditor";
 import { useFinance } from "../context/FinanceContext";
 import { SUCCESS, SUCCESS_SOFT, ERROR, ERROR_SOFT, PRIMARY, PRIMARY_LIGHT, TEXT_SECONDARY } from "../lib/constants";
+import { Dec } from "@/app/libr/NewEnc";
 
 // Pulls everything it needs straight from context — no props required from
 // its parent beyond being inside <FinanceProvider>. The income-editor
@@ -23,8 +24,14 @@ export default function SnapshotRings() {
     expenseDelta,
   } = useFinance();
 
-  const [editingIncome, setEditingIncome] = useState(false);
 
+
+
+  // encrtption text//      
+  const [editingIncome, setEditingIncome] = useState(false);
+  const dect = Dec(totalIncome)
+  console.log(dect)
+ //  
   return (
     <>
       <div className="mb-6 grid gap-4 sm:grid-cols-3">

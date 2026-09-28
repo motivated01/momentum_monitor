@@ -4,7 +4,8 @@ import { useState } from "react";
 import { Check, X } from "lucide-react";
 import { CARD, CARD_BORDER, PRIMARY, TEXT_SECONDARY } from "../lib/constants";
 import { useFinance } from "../context/FinanceContext";
-import { encryptNumber } from "@/lib/encryption";
+import { Enc } from "@/app/libr/NewEnc";
+// import { encryptNumber } from "@/lib/encryption";
 
 // Inline panel for manually topping up Total Income. Reads/writes
 // baseIncome through context — the value it sets is added on top of
@@ -18,9 +19,13 @@ export default function IncomeEditor({ onClose }) {
     // Ensure the value is a valid number and non-negative before saving
     if (inputValue.trim() !== "" && !Number.isNaN(val) && val >= 0) {
       // Encrypt the number after capturing it from the user
-      const encryptedValue = encryptNumber(val);
+      // const encryptedValue = encryptNumber(val);
       // console.log(encryptedValue)
       // Pass the value or encrypted payload to state / persistence
+
+      // enc test
+      const a = Enc(val);
+      console.log(a)
       setBaseIncome(val); 
       onClose();
     }
